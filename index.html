@@ -44,6 +44,12 @@
                     <div class="col-6">
                         <!-- Inizio campo di inserimento task -->
                         <div class="input-group my-3 mb-5">
+                            <!-- Inizio input inserimento colore bordo delle task -->
+                            <div class="input-group-text">
+                                <input type="color" v-model="newTaskColor">
+                            </div>
+                            <!-- Fine input inserimento colore bordo delle task -->
+
                             <!-- Inizio input inserimento task -->
                             <input class="form-control" placeholder="Vorrei..." v-model="newTaskText" @keyup.enter="onAddClick">
                             <!-- Fine input inserimento task -->
@@ -59,11 +65,15 @@
                             <!-- Inizio creazione singolo elemento della Todolist tramite Vue(JS) -->
                             <div class="list-group-item d-flex align-items-center py-3" v-for="(element, i) in tasksList">
                                 <!-- Inizio bordo colorato iniziale del singolo elemento della Todolist -->
-                                <div class="list-group-item-border"></div>
+                                <div class="list-group-item-border" :style="'background-color: ' + element.color"></div>
                                 <!-- Fine bordo colorato iniziale del singolo elemento della Todolist -->
 
                                 <!-- Inizio testo del singolo elemento della Todolist -->
-                                <label class="flex-fill">
+                                <label class="flex-fill" :class="element.checked ? 'text-decoration-line-through' : ''">
+                                    <!-- Inizio input checkbox del singolo elemento della Todolist -->
+                                    <input class="form-check-input me-2 " type="checkbox" v-model="element.checked">
+                                    <!-- Fine input checkbox del singolo elemento della Todolist -->
+
                                     {{ i }} - {{ element.text }}
                                 </label>
                                 <!-- Fine testo del singolo elemento della Todolist -->

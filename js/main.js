@@ -7,11 +7,14 @@ window.addEventListener("DOMContentLoaded", function () {
         el: "#root",
         data: {
             newTaskText: "", /* Serve v-model */
+            newTaskColor: "#ff0000", /* Serve v-model */
             tasksList: [{
-                    text: "Qualcosa"
+                    text: "Qualcosa",
+                    checked: false
                 },
                 {
-                    text: "Qualcos'altro"
+                    text: "Qualcos'altro",
+                    checked: false
                 }
             ]
         },
@@ -25,7 +28,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
                 if (newTask !== "" && !foundElement) {
                     this.tasksList.push({
-                        text: newTask
+                        text: newTask,
+                        checked: false,
+                        color: this.newTaskColor
                     });
                     this.newTaskText= "";
                 }
